@@ -1,0 +1,162 @@
+/*        --------------    em & rem ------------ */
+/* 1. em & rem are units in css which can be used in anywhere like in width, height , font-size, etc. */
+
+/* ------- em ----- */
+
+/* 2. em -> the default value of em is 16px means 1em = 16px but here is a catch when we pass 1em in any child element then it behave deferentely, we are discussing in the below. 
+
+
+
+
+3. here are two cases ->
+
+case -1 we are discussing about font-size
+this below is applcable when we use em in font-size
+
+A. 
+when we give font-size : 1em in an element then it is not taking 16px , it is check it's parent font-size & whatever it's parent font-size it is taking equalent to 1em. & if parent element is not having any font-size hard-codedly means physically written  then it each element have default font-size which is 1em , which is equal to 16px , it is taking this value.
+
+A.1 -> 
+suppose parent have font-size : 20px then child is taking as iem = 20px , 
+if we give 2em in child then it is calculate 20*2 = 40px -> font-size : 40px (child)
+
+A.2 ->
+if we give parent font-size: 2em then, this parent is taking reference from it's own parent ( may be body) & if body is not physically written font-size then it is taking default value which is 1em =16px.
+
+so the parent font-size become  16 *2  = 32px , now child is taking 1em = 32px 
+
+example is below ->
+*/
+
+
+/* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    background-color: lightgray;
+}
+
+.parent {
+    background-color: lightblue;
+    padding: 20px;
+    border: 1px solid red;
+    width: 200px;
+    height: 200px;
+    margin-top: 300px;
+    /* font-size: 20px */
+    /* font-size: 2em;
+} */
+
+/* .child { */
+    /* background-color: lightpink; */
+    /* font-size: 1em; */
+    /* font-size: 2em; */
+
+/* }  */
+
+
+/* case -2 we are discussing about giving padding, margin and width in em unit   
+when we use em as a unit in padding & margin and in width then what happens ->>
+
+A.
+when we use em in padding & margin then it is taking the value from it's own font-size for example child element have a font-size :1em & we apply padding and margin 1em then what font-size :1em holds will go to the padding & margin.
+
+A.1 
+if it is hold 16px then this value go to padding & margin, 
+how font-size value is determined is dicussed in above paragraph.
+
+A.2 if we give  em in border then it is not applying. 
+in border it is not working.
+
+
+code is below -->>
+
+*/
+
+/* 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    background-color: lightgray;
+}
+
+.parent {
+    background-color: lightblue;
+    padding: 20px;
+    border: 1px solid red;
+    width: 200px;
+    height: 200px;
+    margin-top: 300px;
+}
+
+.child {
+    background-color: lightpink;
+    font-size: 1em;
+    padding: 1em;
+    margin: 1em;
+    width: 1em;
+
+} */
+
+
+/*-------------------------------  rem -----------------------------------  */
+/* 1. rem is taking reference from html tag ( we also call it root ) 
+
+2. the default value of rem is 16px b/c font size is bydefault set 16px  in html tag.  
+
+3. if we manually change the font-size in html tag then it is taking that value.
+
+4. whatever the font-size is present in the html tag it will apply in the whole html document.
+
+5. code is below 
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* html{
+    font-size: 10px;
+} */
+
+
+/* or  */
+
+:root{
+    font-size: 10px;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    background-color: lightgray;
+}
+
+.parent {
+    background-color: lightblue;
+    padding: 20px;
+    border: 1px solid red;
+    width: 200px;
+    height: 200px;
+    margin-top: 300px;
+}
+
+.child {
+    background-color: lightpink;
+    font-size: 1rem;
+    /* width: 1rem; */
+
+} 

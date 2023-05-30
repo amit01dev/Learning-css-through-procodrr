@@ -1,0 +1,154 @@
+/* -------------------------positions ----------------- */
+
+/*
+position : static
+         : relative
+         : absolute 
+         :sticky
+         :fixed
+
+
+1. static -> 
+it is default value of position property.
+nothing will change if we give it to any element.
+
+2. relative ->
+A.  if we give this value inside the position property then we can move the element inwhich we give this  property through giving top, bottom, left , right.
+
+B. 
+this element will move whatever value we give in top , bottom , left , right in respect to thier own position.
+if we give top : 20px then it move 20px from top.
+means if we give top : 20px then it take 20px margin-top from the original position of the element, and same with other direction.
+
+
+
+
+3. 
+absolute ->
+
+A.
+when we give absolute in position then the element inwhich  it is applying, this element windraw it's space in the web-page & the next element (if present ) will take this space, and the element inwhich the position : absolute is applyed is hanging in the air on the same sport but it is not taking any space in web page. code is below ->
+
+ul{
+    background-color: lightblue;
+
+}
+.css{
+    position: absolute;
+}
+
+
+B.  if we give this position property a value then it take reference from the view port means if we give position : absolute and give top : 20px ( yes we can give top, bottom, left, right) then it is move 20px from top of view port. code is below ->
+
+ ul{
+    background-color: lightblue;
+    
+}
+.css{
+    position: absolute;
+    top: 20px;
+}
+
+
+
+
+
+B.0 
+when we give some value in top , botton, left, right then it is taking all the value just like the margin -top, botton,left, right. 
+
+B.1 
+spacical case -> 
+this above is only apply when the element  parent have position : static ( which is default) , if the element's parent or grand-parent ... till html  has anyother property in position then this element on which we apply absolute is taking reference from that parent or grand-parent element. and create a 20px gap from top that parent. code is below ->
+
+ ul{
+    background-color: lightblue;
+    position: relative;
+
+}
+.css{
+    position: absolute;
+    top: 50px;
+}
+
+
+ */
+
+
+/* 
+
+4. 
+position : fixed 
+
+A. 
+it is act just like the absolute , when we give  this to the element it  leaves their space in web-page 
+
+B.
+and if we give top ..bottom ..etc then it is taking reference from view port.
+
+
+5.
+position : sticky
+
+A. when we give this property to any element then it this element is behave normal just like any element behave in relative position.
+
+A.1 the child on which we apply sticky will not go outside of the parent element ever, whatever properties we apply it is not leaving the parent element.
+
+B. when we give top or bottom etc in this element then
+
+B.1 if we don't apply it's any parent overflow : scroll then it is taking refernce from view-port but it is not leaving the parent element , if parent element is going to touch the view-port then it is taking gap (here note that the child is not leaving the parent element, it is only move inside the parent element.) code is below ->
+
+ul{
+    background-color: lightblue;
+
+}
+.css{
+    position: sticky;
+    top: 50px;
+}
+
+
+
+ B.2
+ when we give top .. bottom etc -> then 
+ it does't move anywhere until it find overflow : scroll property in any of it's parent till root. and the moment it find this property it is taking reference from that but it not leaving the parent element , if parent element is toucking the grand-parent boundary then it is taking reference from the grand -parent ( we apply overflow to grand -parent)
+ ex-> main > ul > li 
+ we apply main -> overflow : scroll , & position : sticky in li and top :20px in li ,
+ then it is not moving li 20px until ul is touching the main.
+
+code ->
+ main{
+    overflow-y: scroll;
+ }
+ul{
+    background-color: lightblue;
+
+}
+.css{
+    position: sticky;
+    top: 50px;
+}
+
+
+
+ 
+ 
+ */
+
+
+/* 
+practical use case ->
+1. to create a header or nav bar and when use scroll this nav bar is going to stick to the top, code is below
+
+header{
+    background-color: lightblue;
+    position: sticky;
+    top: 0px;
+
+}
+
+here in above code when we give position :sticky nothing happens , even we scroll the page the header is going to scroll, but when we give top: 0px then this header is going to take reference from view-port ( b/c there is no parent ( parent A )of header through which it take reference when we apply overflow : scroll to that parent ( parent A ) .
+
+so when we scroll it this header is not going with scroll b/c it is taking gap of 0px from view-port.
+
+*/
+
